@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://masterzht.github.io">
-  <title>Archives: 2018 | Machinezht&#39;s Blog</title>
+  <title>Spring基础认识 | Machinezht&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Machinezht&#39;s Blog">
-<meta property="og:url" content="https://masterzht.github.io/archives/2018/index.html">
+  <meta name="description" content="Spring框架是一个开源的轻量级企业应用开发框架。大致可以分为七个模块。   七大模块作用及简介">
+<meta name="keywords" content="spring,ioc,DI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring基础认识">
+<meta property="og:url" content="https://masterzht.github.io/2018/03/31/Spring基础/index.html">
 <meta property="og:site_name" content="Machinezht&#39;s Blog">
+<meta property="og:description" content="Spring框架是一个开源的轻量级企业应用开发框架。大致可以分为七个模块。   七大模块作用及简介">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://masterzht.github.io/assets/blog_img/180331-3.gif">
+<meta property="og:updated_time" content="2018-03-31T15:08:10.916Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Machinezht&#39;s Blog">
+<meta name="twitter:title" content="Spring基础认识">
+<meta name="twitter:description" content="Spring框架是一个开源的轻量级企业应用开发框架。大致可以分为七个模块。   七大模块作用及简介">
+<meta name="twitter:image" content="https://masterzht.github.io/assets/blog_img/180331-3.gif">
   
     <link rel="alternative" href="/atom.xml" title="Machinezht&#39;s Blog" type="application/atom+xml">
   
@@ -144,36 +151,102 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Spring基础" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/31/Spring基础/" class="archive-article-date">
-  	<time datetime="2018-03-31T13:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/31/Spring基础/">Spring基础认识</a>
+    <h1 class="article-title" itemprop="name">
+      Spring基础认识
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/03/31/Spring基础/" class="archive-article-date">
+  	<time datetime="2018-03-31T13:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Spring框架是一个开源的轻量级企业应用开发框架。大致可以分为七个模块。</p>
+<p><img src="/assets/blog_img/180331-3.gif" alt="七大模块"></p>
+<blockquote>
+<p><a href="https://blog.csdn.net/xlgen157387/article/details/45290799" target="_blank" rel="noopener">七大模块作用及简介</a></p>
+</blockquote>
+<a id="more"></a>
+<h3 id="依赖注入-DI-与控制反转-IOC"><a href="#依赖注入-DI-与控制反转-IOC" class="headerlink" title="依赖注入(DI)与控制反转(IOC)"></a><strong>依赖注入(DI)与控制反转(IOC)</strong></h3><p>简明扼要的说的话就是ioc通过DI这种技术来实现。</p>
+<p>其中依赖注入有以下实现方式：</p>
+<ul>
+<li>基于接口。实现特定接口以供外部容器注入所依赖类型的对象。</li>
+<li>基于 set 方法。实现特定属性的public set方法，来让外部容器调用传入所依赖类型的对象。</li>
+<li>基于构造函数（构造器）。实现特定参数的构造函数，在新建对象时传入所依赖类型的对象。</li>
+<li>基于注解（@Autowired）</li>
+</ul>
+<p>具体关系也不是很明白，大概也就是这个样子</p>
+<ul>
+<li>下面先给出不采用依赖注入的<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class 大哥&#123;</span><br><span class="line">    pubic void method()&#123;</span><br><span class="line">        小弟 x=....;（一般是用new,可能是new hh，mm，ll，说不好）;</span><br><span class="line">        x.打架();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>首先大哥是要依赖于小弟的，否则什么都不是，要使用小弟，必须要获得小弟的实例引用。这本不是问题，但一旦要修改就需要单位到这个代码，整体的代码完整性就要受到影响，所以就出来了依赖注入。</p>
+<ul>
+<li>依赖注入的基于set方法和基于构造器的实现</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class 大哥&#123;</span><br><span class="line">    private 小弟 x;</span><br><span class="line">    pubic void method()&#123;</span><br><span class="line">        //小弟 x=....;（一般是用new,可能是new hh，mm，ll，说不好，反正创建实例）;</span><br><span class="line">        x.打架();</span><br><span class="line">    &#125;</span><br><span class="line">    //基于set</span><br><span class="line">    public void setx（小弟 x）｛</span><br><span class="line">    this.小弟=小弟;</span><br><span class="line">    &#125;</span><br><span class="line">    //基于构造器</span><br><span class="line">    public 大哥(小弟 x)&#123;</span><br><span class="line">    this.小弟=小弟;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>新增setter方法，在spring中，这个方法会被spring框架调用，以注入一个小弟的实例。好处是什么呢？原来要new的，现在呢，可以在xml配置里面添加注入对象，降低耦合性。<br>所以，讲真，依赖注入真的没什么，就是种简单的设计模式而已。</p>
+<p>总结来看</p>
+<p><em>所谓的依赖注入，则是，甲方开放接口，在它需要的时候，能够讲乙方传递进来(注入)<br>所谓的控制反转，甲乙双方不相互依赖，交易活动的进行不依赖于甲乙任何一方，整个活动的进行由第三方负责管理（这个第三方在这里就是spring容器）。</em></p>
+<ul>
+<li>上面是便于理解，下面来真实的实现代码</li>
+</ul>
+<ol>
+<li>首先spring是通过beans来管理对象的，首先这是个xml文件。看个helloworld的例子</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">    xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans</span><br><span class="line">    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;bean id=&quot;helloBean&quot; class=&quot;com.shiyanlou.demo.helloworld.HelloWorld&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;name&quot; value=&quot;shiyanlou&quot; /&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+<p>这里就创建了一个类的bean对象了（sprin实际上用的是反射实现），下面是property意味着这是个setter注入，如果是constructor-arg就是构造器注入。到这里实际上已经基本实现依赖注入，接着要去用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ApplicationContext context =</span><br><span class="line">        new ClassPathXmlApplicationContext(new String[] &#123;&quot;xx.xml&quot;&#125;);</span><br></pre></td></tr></table></figure>
+<p>这样就实现了调用，还是很简洁美观的。<br>再次总结，依赖注入是手段，控制反转是思想，把对象创建权交给spring容器管理。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -193,7 +266,7 @@
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -206,172 +279,104 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://masterzht.github.io/2018/03/31/Spring基础/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/31/180331-2/" class="archive-article-date">
-  	<time datetime="2018-03-31T01:05:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/03/31/180331-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SSL(Secure Socket Layer)的工作原理</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/31/180331-2/">SSL(Secure Socket Layer)的工作原理</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">https</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网络</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ssl</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/计算机//" class="article-tag-list-link color4">计算机</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/31/180331-1/" class="archive-article-date">
-  	<time datetime="2018-03-31T00:27:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/31/180331-1/">华为P20发布会有感</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">华为</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/日常//" class="article-tag-list-link color3">日常</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/30/180330-1/" class="archive-article-date">
-  	<time datetime="2018-03-30T14:44:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/30/180330-1/">关于Markdown的使用，你只需要掌握这几个！</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">markdown</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/计算机//" class="article-tag-list-link color4">计算机</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -394,8 +399,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
