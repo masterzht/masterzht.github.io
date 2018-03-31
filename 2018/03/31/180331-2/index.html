@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://masterzht.github.io">
-  <title>Archives | Machinezht&#39;s Blog</title>
+  <title>SSL(Secure Socket Layer)的工作原理 | Machinezht&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Machinezht&#39;s Blog">
-<meta property="og:url" content="https://masterzht.github.io/archives/index.html">
+  <meta name="description" content="网络方面学的不怎么样，之前看过一本图解HTTP协议，里面有讲过SSL，现在又有点忘了，刚好在看Java Web的书，里面有提供几个思路，于是就又拿出来讲了。当然，如果以后还有新的认识的话，我再回过来改。 SSL，中文翻译过来是安全套接层，保障数据传输安全的，主要是保证数据传输不会被窃听，要知道http时代数据一旦截取，就是明文展示了，传输的密码也只是通过浏览器用简单的base64加密一下。而htt">
+<meta name="keywords" content="https,网络,ssl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSL(Secure Socket Layer)的工作原理">
+<meta property="og:url" content="https://masterzht.github.io/2018/03/31/180331-2/index.html">
 <meta property="og:site_name" content="Machinezht&#39;s Blog">
+<meta property="og:description" content="网络方面学的不怎么样，之前看过一本图解HTTP协议，里面有讲过SSL，现在又有点忘了，刚好在看Java Web的书，里面有提供几个思路，于是就又拿出来讲了。当然，如果以后还有新的认识的话，我再回过来改。 SSL，中文翻译过来是安全套接层，保障数据传输安全的，主要是保证数据传输不会被窃听，要知道http时代数据一旦截取，就是明文展示了，传输的密码也只是通过浏览器用简单的base64加密一下。而htt">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://masterzht.github.io/assets/blog_img/180331-2.png">
+<meta property="og:updated_time" content="2018-03-31T03:08:19.301Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Machinezht&#39;s Blog">
+<meta name="twitter:title" content="SSL(Secure Socket Layer)的工作原理">
+<meta name="twitter:description" content="网络方面学的不怎么样，之前看过一本图解HTTP协议，里面有讲过SSL，现在又有点忘了，刚好在看Java Web的书，里面有提供几个思路，于是就又拿出来讲了。当然，如果以后还有新的认识的话，我再回过来改。 SSL，中文翻译过来是安全套接层，保障数据传输安全的，主要是保证数据传输不会被窃听，要知道http时代数据一旦截取，就是明文展示了，传输的密码也只是通过浏览器用简单的base64加密一下。而htt">
+<meta name="twitter:image" content="https://masterzht.github.io/assets/blog_img/180331-2.png">
   
     <link rel="alternative" href="/atom.xml" title="Machinezht&#39;s Blog" type="application/atom+xml">
   
@@ -150,36 +157,86 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-180331-2" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/31/180331-2/" class="archive-article-date">
-  	<time datetime="2018-03-31T01:05:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/31/180331-2/">SSL(Secure Socket Layer)的工作原理</a>
+    <h1 class="article-title" itemprop="name">
+      SSL(Secure Socket Layer)的工作原理
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/03/31/180331-2/" class="archive-article-date">
+  	<time datetime="2018-03-31T01:05:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>网络方面学的不怎么样，之前看过一本图解HTTP协议，里面有讲过SSL，现在又有点忘了，刚好在看Java Web的书，里面有提供几个思路，于是就又拿出来讲了。当然，如果以后还有新的认识的话，我再回过来改。</p>
+<p>SSL，中文翻译过来是安全套接层，保障数据传输安全的，<strong>主要是保证数据传输不会被窃听</strong>，要知道http时代数据一旦截取，就是明文展示了，传输的密码也只是通过浏览器用简单的base64加密一下。而https多了这个ssl就不一样了。<br>现代安全通信广泛采用的加密技术就是非对称加密，这也是SSL的基本实现技术，广泛使用的加密算法是RSA算法。</p>
+<h3 id="加密与解密"><a href="#加密与解密" class="headerlink" title="加密与解密"></a><strong>加密与解密</strong></h3><p>非对称密钥一共有两个密钥，分为公钥和私钥，公钥可以随便传阅，通过公钥或者私钥加密的信息只有通过它的另一把钥匙才可以解密。要清楚一个概念，用私钥加密只有一个目的，就是认证，因为谁都可以有公钥，都可以解密。所以下面说认证。</p>
+<h3 id="认证"><a href="#认证" class="headerlink" title="认证"></a><strong>认证</strong></h3><p><strong>为什么要认证？</strong><br>因为我们一般是客户端，要上网发数据给远程服务器什么的，最重要的是保证我们发送数据不被窃听，所以我们可以用公钥加密，那么可以解密的只有对应的私钥了（只有一把）。但问题是<strong>你怎么知道服务器传过来的公钥的主人就是这个网站呢？</strong>不可能见面验证吧。。<br>SSL身份验证需要引入证书。专属通常包含一下几个：</p>
+<ol>
+<li>公钥</li>
+<li>关于主题的信息，即公开密钥的所有者</li>
+<li>证书的发行机构</li>
+<li>证书到期时间</li>
+</ol>
+<p>其实关键在3，你要有一个可信的证书颁发者，像verisign。那么具体步骤呢？就是服务器要想这个证书认证机构申请辨别真身，证书机构会要服务器提供相关身份证件复印件。到这里为止，一个第三方已经证实了服务器的身份。然后证书机构给服务器颁布证书，证书主要内容就是以上四项.而且这个证书还是用证书机构的私钥加密过的，只有证书机构的公钥才可以解密（当然证书机构的公钥广泛分布在各个浏览器，如果你这个机构比较low，可以想牛逼的机构申请验证自己的身份，让它带你玩，这样浏览器也能有你了）。</p>
+<p>然后简单介绍认证过程</p>
+<ol>
+<li>服务器： 我是真的，这是我的证书。看看就行了。</li>
+<li>客户端： 不一定。证书虽然是真的，但我不能确定你就是证书的持有者呀。谁知道你是不是偷的。我要用证书机构的公钥解密，然后找到你的公钥，看你怎么说？</li>
+<li>服务器：宝贝，真是我+[使用服务器的私钥加密这几个字，如果匹配就没话说了]</li>
+<li>客户端： 嗯。欢迎欢迎。认证完成，接下来就可以用对称加密了，速度可以快不少呢！我有密码要传给你，会用你的公钥加密啊</li>
+<li>服务器： 好的。我有私钥，可以解密，并且没有任何人知道。<br><img src="/assets/blog_img/180331-2.png" alt=""></li>
+</ol>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a><strong>最后</strong></h3><p>这里就简单的介绍一下，做到有个数就行，具体的https实现可能会有九个交互过程呢？还可能会出现传输数据遭到篡改，完整性缺失。具体可以看之前写的图解http的思维导图</p>
+<p><a href="http://naotu.baidu.com/file/2b0a637c68766be187bbf6f2f8288255?token=28e45abf38880409" target="_blank" rel="noopener">图解http</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -199,95 +256,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://masterzht.github.io/2018/03/31/180331-2/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/31/180331-1/" class="archive-article-date">
-  	<time datetime="2018-03-31T00:27:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/03/31/180331-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">华为P20发布会有感-关于实现自我价值最大化</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/31/180331-1/">华为P20发布会有感-关于实现自我价值最大化</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">华为</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/30/180330-1/" class="archive-article-date">
-  	<time datetime="2018-03-30T14:44:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/30/180330-1/">关于Markdown的使用，你只需要掌握这几个！</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">markdown</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -310,8 +378,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
