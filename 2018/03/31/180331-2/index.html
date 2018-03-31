@@ -17,7 +17,7 @@
 <meta property="og:description" content="网络方面学的不怎么样，之前看过一本图解HTTP协议，里面有讲过SSL，现在又有点忘了，刚好在看Java Web的书，里面有提供几个思路，于是就又拿出来讲了。当然，如果以后还有新的认识的话，我再回过来改。 SSL，中文翻译过来是安全套接层，保障数据传输安全的，主要是保证数据传输不会被窃听，要知道http时代数据一旦截取，就是明文展示了，传输的密码也只是通过浏览器用简单的base64加密一下。而htt">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://masterzht.github.io/assets/blog_img/180331-2.png">
-<meta property="og:updated_time" content="2018-03-31T03:08:19.301Z">
+<meta property="og:updated_time" content="2018-03-31T10:47:09.479Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSL(Secure Socket Layer)的工作原理">
 <meta name="twitter:description" content="网络方面学的不怎么样，之前看过一本图解HTTP协议，里面有讲过SSL，现在又有点忘了，刚好在看Java Web的书，里面有提供几个思路，于是就又拿出来讲了。当然，如果以后还有新的认识的话，我再回过来改。 SSL，中文翻译过来是安全套接层，保障数据传输安全的，主要是保证数据传输不会被窃听，要知道http时代数据一旦截取，就是明文展示了，传输的密码也只是通过浏览器用简单的base64加密一下。而htt">
@@ -63,8 +63,6 @@
 			<ul>
 			
 				<li><a href="/">主页</a></li>
-	        
-				<li><a href="/about">关于</a></li>
 	        
 			</ul>
 		</nav>
@@ -120,8 +118,6 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -140,9 +136,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/about">关于</a></li>
+					<li style="width: 100%"><a href="/">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -178,7 +172,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>网络方面学的不怎么样，之前看过一本图解HTTP协议，里面有讲过SSL，现在又有点忘了，刚好在看Java Web的书，里面有提供几个思路，于是就又拿出来讲了。当然，如果以后还有新的认识的话，我再回过来改。</p>
-<p>SSL，中文翻译过来是安全套接层，保障数据传输安全的，<strong>主要是保证数据传输不会被窃听</strong>，要知道http时代数据一旦截取，就是明文展示了，传输的密码也只是通过浏览器用简单的base64加密一下。而https多了这个ssl就不一样了。<br>现代安全通信广泛采用的加密技术就是非对称加密，这也是SSL的基本实现技术，广泛使用的加密算法是RSA算法。</p>
+<p>SSL，中文翻译过来是安全套接层，保障数据传输安全的，<strong>主要是保证数据传输不会被窃听</strong>，要知道http时代数据一旦截取，就是明文展示了，传输的密码也只是通过浏览器用简单的base64加密一下。而https多了这个ssl就不一样了。<br>现代安全通信广泛采用的加密技术就是非对称加密，这也是SSL的基本实现技术，广泛使用的加密算法是RSA算法。<br><a id="more"></a></p>
 <h3 id="加密与解密"><a href="#加密与解密" class="headerlink" title="加密与解密"></a><strong>加密与解密</strong></h3><p>非对称密钥一共有两个密钥，分为公钥和私钥，公钥可以随便传阅，通过公钥或者私钥加密的信息只有通过它的另一把钥匙才可以解密。要清楚一个概念，用私钥加密只有一个目的，就是认证，因为谁都可以有公钥，都可以解密。所以下面说认证。</p>
 <h3 id="认证"><a href="#认证" class="headerlink" title="认证"></a><strong>认证</strong></h3><p><strong>为什么要认证？</strong><br>因为我们一般是客户端，要上网发数据给远程服务器什么的，最重要的是保证我们发送数据不被窃听，所以我们可以用公钥加密，那么可以解密的只有对应的私钥了（只有一把）。但问题是<strong>你怎么知道服务器传过来的公钥的主人就是这个网站呢？</strong>不可能见面验证吧。。<br>SSL身份验证需要引入证书。专属通常包含一下几个：</p>
 <ol>
@@ -257,6 +251,17 @@
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/计算机//" class="article-tag-list-link color4">计算机</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -386,7 +391,7 @@
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
-		showTags: false
+		showTags: true
 	}
 </script>
 
@@ -448,6 +453,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">华为</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
@@ -461,10 +470,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ssl</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">华为</a>
               </li>
             
             <div class="clearfix"></div>

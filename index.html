@@ -57,8 +57,6 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/about">关于</a></li>
-	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -113,8 +111,6 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -133,9 +129,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/about">关于</a></li>
+					<li style="width: 100%"><a href="/">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -173,27 +167,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>网络方面学的不怎么样，之前看过一本图解HTTP协议，里面有讲过SSL，现在又有点忘了，刚好在看Java Web的书，里面有提供几个思路，于是就又拿出来讲了。当然，如果以后还有新的认识的话，我再回过来改。</p>
-<p>SSL，中文翻译过来是安全套接层，保障数据传输安全的，<strong>主要是保证数据传输不会被窃听</strong>，要知道http时代数据一旦截取，就是明文展示了，传输的密码也只是通过浏览器用简单的base64加密一下。而https多了这个ssl就不一样了。<br>现代安全通信广泛采用的加密技术就是非对称加密，这也是SSL的基本实现技术，广泛使用的加密算法是RSA算法。</p>
-<h3 id="加密与解密"><a href="#加密与解密" class="headerlink" title="加密与解密"></a><strong>加密与解密</strong></h3><p>非对称密钥一共有两个密钥，分为公钥和私钥，公钥可以随便传阅，通过公钥或者私钥加密的信息只有通过它的另一把钥匙才可以解密。要清楚一个概念，用私钥加密只有一个目的，就是认证，因为谁都可以有公钥，都可以解密。所以下面说认证。</p>
-<h3 id="认证"><a href="#认证" class="headerlink" title="认证"></a><strong>认证</strong></h3><p><strong>为什么要认证？</strong><br>因为我们一般是客户端，要上网发数据给远程服务器什么的，最重要的是保证我们发送数据不被窃听，所以我们可以用公钥加密，那么可以解密的只有对应的私钥了（只有一把）。但问题是<strong>你怎么知道服务器传过来的公钥的主人就是这个网站呢？</strong>不可能见面验证吧。。<br>SSL身份验证需要引入证书。专属通常包含一下几个：</p>
-<ol>
-<li>公钥</li>
-<li>关于主题的信息，即公开密钥的所有者</li>
-<li>证书的发行机构</li>
-<li>证书到期时间</li>
-</ol>
-<p>其实关键在3，你要有一个可信的证书颁发者，像verisign。那么具体步骤呢？就是服务器要想这个证书认证机构申请辨别真身，证书机构会要服务器提供相关身份证件复印件。到这里为止，一个第三方已经证实了服务器的身份。然后证书机构给服务器颁布证书，证书主要内容就是以上四项.而且这个证书还是用证书机构的私钥加密过的，只有证书机构的公钥才可以解密（当然证书机构的公钥广泛分布在各个浏览器，如果你这个机构比较low，可以想牛逼的机构申请验证自己的身份，让它带你玩，这样浏览器也能有你了）。</p>
-<p>然后简单介绍认证过程</p>
-<ol>
-<li>服务器： 我是真的，这是我的证书。看看就行了。</li>
-<li>客户端： 不一定。证书虽然是真的，但我不能确定你就是证书的持有者呀。谁知道你是不是偷的。我要用证书机构的公钥解密，然后找到你的公钥，看你怎么说？</li>
-<li>服务器：宝贝，真是我+[使用服务器的私钥加密这几个字，如果匹配就没话说了]</li>
-<li>客户端： 嗯。欢迎欢迎。认证完成，接下来就可以用对称加密了，速度可以快不少呢！我有密码要传给你，会用你的公钥加密啊</li>
-<li>服务器： 好的。我有私钥，可以解密，并且没有任何人知道。<br><img src="/assets/blog_img/180331-2.png" alt=""></li>
-</ol>
-<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a><strong>最后</strong></h3><p>这里就简单的介绍一下，做到有个数就行，具体的https实现可能会有九个交互过程呢？还可能会出现传输数据遭到篡改，完整性缺失。具体可以看之前写的图解http的思维导图</p>
-<p><a href="http://naotu.baidu.com/file/2b0a637c68766be187bbf6f2f8288255?token=28e45abf38880409" target="_blank" rel="noopener">图解http</a></p>
-
+<p>SSL，中文翻译过来是安全套接层，保障数据传输安全的，<strong>主要是保证数据传输不会被窃听</strong>，要知道http时代数据一旦截取，就是明文展示了，传输的密码也只是通过浏览器用简单的base64加密一下。而https多了这个ssl就不一样了。<br>现代安全通信广泛采用的加密技术就是非对称加密，这也是SSL的基本实现技术，广泛使用的加密算法是RSA算法。<br>
+        
+          <a class="article-more-a" href="/2018/03/31/180331-2/#more">more >></a>
+        
       
 
       
@@ -221,6 +198,17 @@
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/计算机//" class="article-tag-list-link color4">计算机</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
         <p class="article-more-link">
@@ -275,11 +263,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><img src="\assets\blog_img\180331-1.jpg" alt="p20pro与三星S9+对比图"></p>
-<p>这是在华为P20发布会上展出的一张在极度昏暗条件下两部手机的对比图。有人可能会问，Galaxy S9+拍的呢？事实上就是一团黑！</p>
-<p>然而这却在网上引起了不小的争议，由图可见，P20 Pro曝光时间30s，ISO高达3200，而S9+曝光时间只有10s，ISO更是只有800，这不符合控制变量这个计较标准呀。</p>
-<p>事实上呢，对于摄影师而言呢，无论用手机还是相机，拍照的初衷都是要拍出最震撼人心的作品！与其对齐参数，划定标准，目的是为了击败对手而拍摄样片，倒不如摆脱掉种种拘泥与约束，展现设备的极限拍摄水准，尽最大程度的去重现当前的这个场景。</p>
-<p>于此，对于个人也亦如此，要摆脱掉种种的攀比，不要只是简简单单的为了超越对手而去努力奋斗，我们的初衷与最终目的都是为了提高自身，致力于实现自我价值最大化而去努力。</p>
-
+<p>这是在华为P20发布会上展出的一张在极度昏暗条件下两部手机的对比图。有人可能会问，Galaxy S9+拍的呢？事实上就是一团黑！<br>
+        
+          <a class="article-more-a" href="/2018/03/31/180331-1/#more">more >></a>
+        
       
 
       
@@ -299,6 +286,17 @@
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/日常//" class="article-tag-list-link color3">日常</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
         <p class="article-more-link">
@@ -353,29 +351,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>对markdown还不够熟悉，但我却能预料到以后会用它去记录生活的点点滴滴，这也正是我这篇博客诞生的原因。 </p>
-<p>markdown是一种轻量级的标记语言，所说是轻量级，但是其提供的语法却是不少。如果真要把所有的语法学个遍的话，那是不现实的。所以我会归出我写博客期间需要掌握的几种语法。</p>
-<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a><strong>标题</strong></h2><p>标题一共可以分为六级，<strong>我这里就只用第二级</strong>，临时使用也可以用第三级。</p>
-<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a><strong>链接</strong></h2><p>链接分为两类：一类是图片链接，一类是超文本链接。还是有区别的，图片链接是本页直接显示，另外一类是相当于新标签页打开。</p>
-<ul>
-<li><p><strong>看一下图片链接的例子:</strong> <img src="\assets\blog_img\180330-1.png" alt="图片无法显示的时候显示的内容" title="鼠标放置在图片上显示"></p>
-</li>
-<li><p><strong>看一下url链接的例子:</strong> <a href="www.baidu.com" title="百度一下，你就知道，鼠标放上去就显示">Baidu</a></p>
-</li>
-</ul>
-<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a><strong>列表</strong></h2><p>加个1234就可以。</p>
-<hr>
-<hr>
-<ol>
-<li>第一节移动互联开发技术</li>
-<li>ios课还是上了，简直服了，电脑不好用</li>
-<li>水平可以，计算机操作系统老师水平挺强，要好好学学!</li>
-</ol>
-<h2 id="引用的内容"><a href="#引用的内容" class="headerlink" title="引用的内容"></a><strong>引用的内容</strong></h2><blockquote>
-<p>Stay hungry,Stay healthy!<br>*—— 乔布斯</p>
-</blockquote>
-<h2 id="代码引用"><a href="#代码引用" class="headerlink" title="代码引用"></a><strong>代码引用</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">神了</span><br><span class="line">神了</span><br></pre></td></tr></table></figure>
-<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a><strong>最后</strong></h2><p>目前就记录这一些，以后还有好用的再另加。</p>
-
+<p>markdown是一种轻量级的标记语言，所说是轻量级，但是其提供的语法却是不少。如果真要把所有的语法学个遍的话，那是不现实的。所以我会归出我写博客期间需要掌握的几种语法。<br><!-- 这个符号以上的就是摘要 --><br>
+        
+          <a class="article-more-a" href="/2018/03/30/180330-1/#more">more >></a>
+        
       
 
       
@@ -395,6 +374,17 @@
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/计算机//" class="article-tag-list-link color4">计算机</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
         <p class="article-more-link">
@@ -459,7 +449,7 @@
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
-		showTags: false
+		showTags: true
 	}
 </script>
 
@@ -521,6 +511,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">华为</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
@@ -534,10 +528,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ssl</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">华为</a>
               </li>
             
             <div class="clearfix"></div>
