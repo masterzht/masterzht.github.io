@@ -1,2 +1,3 @@
 options:
   imagePath: /assets/online_img
+  askImageFilename: true
