@@ -11,7 +11,7 @@ date: 2018-04-02 09:20:00
 mode1指的是将显示层，数据层，控制层交给jsp+javabean处理。jsp负责显示（v层）与逻辑处理（c层），javabean负责业务层(讲真，这种模式在项目中是禁止使用的，个人觉得就是是小型项目也别用了吧)
 ![](\assets\blog_img\180402-1.png)
 [给一个jsp+javabean登陆的案例: ](https://github.com/masterzht/Study-Notes/tree/master/Java/web%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84mode1%E4%B8%8Emode2/mode1/%E7%99%BB%E9%99%86-jsp%2Bjdbc)
-
+<!-- more -->
 ### **Mode2**
 
 mode2
