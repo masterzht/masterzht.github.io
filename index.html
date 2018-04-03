@@ -146,6 +146,106 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-同步调用、异步调用、回调" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/03/同步调用、异步调用、回调/">同步调用、异步调用、回调</a>
+    </h1>
+  
+
+        
+        <a href="/2018/04/03/同步调用、异步调用、回调/" class="archive-article-date">
+  	<time datetime="2018-04-03T10:56:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="方法调用"><a href="#方法调用" class="headerlink" title="方法调用"></a><strong>方法调用</strong></h2><p><strong>同步调用</strong>:要等待对方执行完毕才返回。A类中的a方法里面用到了B类的b方法，所以要执行完b（）之后a方法才结束。如果等待b方法太就的话，就会导致堵塞。</p>
+<p><img src="\assets\online_img\同步调用.png" alt="upload successful"></p>
+<p><strong>异步调用</strong>:是解决同步可能出现的堵塞的情况。它的a方法不会等待b方法的执行，可能a方法直接返回了一个空值，然后A类开始下面的运行，b方法再慢慢执行，这就是异步（实现的时候开一个线程就可以）。</p>
+<p><img src="\assets\online_img\异步调用.png" alt="upload successful"></p>
+<h2 id="回调"><a href="#回调" class="headerlink" title="回调"></a><strong>回调</strong></h2><p>但为什么会出来回调呢，因为异步的b方法自己单独执行了，但是如果我想获取b方法的结果给a呢，所以就引出了回调这个说法。（讲真，如果a方法只是需要b的一个结果的话，不需要回调，但是如果a方法需要b返回很多东西就不行了，而回调就可以callback.method1，2，3()…….)<br><strong>回调也分为同步回调和异步回调</strong>，和上面的调用是一样的，异步回调a方法不用等待b方法执行完。</p>
+<p><img src="\assets\online_img\回调.png" alt="upload successful"></p>
+<p>关于同步异步、堵塞与非堵塞的关系可以参考这篇博文： <a href="http://www.cnblogs.com/xybaby/p/6406191.html" target="_blank" rel="noopener">http://www.cnblogs.com/xybaby/p/6406191.html</a></p>
+<p>同异步回调案例： <a href="https://github.com/masterzht/Study-Notes/tree/master/Java/%E5%90%8C%E6%AD%A5%E5%9B%9E%E8%B0%83%E4%B8%8E%E5%BC%82%E6%AD%A5%E5%9B%9E%E8%B0%83" target="_blank" rel="noopener">https://github.com/masterzht/Study-Notes/tree/master/Java/%E5%90%8C%E6%AD%A5%E5%9B%9E%E8%B0%83%E4%B8%8E%E5%BC%82%E6%AD%A5%E5%9B%9E%E8%B0%83</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">回调</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">堵塞</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">异步</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/计算机//" class="article-tag-list-link color4">计算机</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/04/03/同步调用、异步调用、回调/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-web开发中的model1和model2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -701,6 +801,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">华为</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">https</a>
               </li>
              
@@ -714,10 +818,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">markdown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">华为</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -738,6 +838,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">mode1与mode2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">回调</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">堵塞</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">异步</a>
               </li>
             
             <div class="clearfix"></div>
