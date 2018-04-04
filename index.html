@@ -146,6 +146,71 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Rertofit的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/04/Rertofit的使用/">Rertofit的使用</a>
+    </h1>
+  
+
+        
+        <a href="/2018/04/04/Rertofit的使用/" class="archive-article-date">
+  	<time datetime="2018-04-04T00:18:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>retrofit是一个网络请求库，它是根据okhttp改造的，底层实现还是okhttp，它自身还封装了解析html，json等等的库，用于更便利的restful风格的数据。（python最近也出现了个库requests-html，把请求和解析都封装好了，过一段时间，我会描述一下这个库的简单使用）<br>目前retrofit的最新版本是2.4.0,我会基于这个版本做简单的使用介绍<br>
+        
+          <a class="article-more-a" href="/2018/04/04/Rertofit的使用/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/04/04/Rertofit的使用/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-同步调用、异步调用、回调" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -171,6 +236,7 @@
 <p><strong>异步调用</strong>:是解决同步可能出现的堵塞的情况。它的a方法不会等待b方法的执行，可能a方法直接返回了一个空值，然后A类开始下面的运行，b方法再慢慢执行，这就是异步（实现的时候开一个线程就可以）。</p>
 <p><img src="\assets\online_img\异步调用.png" alt="upload successful"></p>
 <h2 id="回调"><a href="#回调" class="headerlink" title="回调"></a><strong>回调</strong></h2><p>但为什么会出来回调呢，因为异步的b方法自己单独执行了，但是如果我想获取b方法的结果给a呢，所以就引出了回调这个说法。（讲真，如果a方法只是需要b的一个结果的话，不需要回调，但是如果a方法需要b返回很多东西就不行了，而回调就可以callback.method1，2，3()…….)<br><strong>回调也分为同步回调和异步回调</strong>，和上面的调用是一样的，异步回调a方法不用等待b方法执行完。</p>
+<p>总结一下回调的步骤：a调用b方法，并且把自身作为一个callback传给了b方法，b执行玩个就可以通过传过来的a自身这个callback<strong>回传数据</strong>。（其实可以不用回调，b自己new一个a，然后在掉用A类里面的方法就可以了，不过终究是不好的，至于为什么我也不怎么清楚）</p>
 <p><img src="\assets\online_img\回调.png" alt="upload successful"></p>
 <p>关于同步异步、堵塞与非堵塞的关系可以参考这篇博文： <a href="http://www.cnblogs.com/xybaby/p/6406191.html" target="_blank" rel="noopener">http://www.cnblogs.com/xybaby/p/6406191.html</a></p>
 <p>同异步回调案例： <a href="https://github.com/masterzht/Study-Notes/tree/master/Java/%E5%90%8C%E6%AD%A5%E5%9B%9E%E8%B0%83%E4%B8%8E%E5%BC%82%E6%AD%A5%E5%9B%9E%E8%B0%83" target="_blank" rel="noopener">https://github.com/masterzht/Study-Notes/tree/master/Java/%E5%90%8C%E6%AD%A5%E5%9B%9E%E8%B0%83%E4%B8%8E%E5%BC%82%E6%AD%A5%E5%9B%9E%E8%B0%83</a></p>
@@ -266,7 +332,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Mode1"><a href="#Mode1" class="headerlink" title="Mode1"></a><strong>Mode1</strong></h3><p>mode1指的是将显示层，数据层，控制层交给jsp+javabean处理。jsp负责显示（v层）与逻辑处理（c层），javabean负责业务层(讲真，这种模式在项目中是禁止使用的，个人觉得就是是小型项目也别用了吧)<br><img src="\assets\blog_img\180402-1.png" alt=""><br><a href="https://github.com/masterzht/Study-Notes/tree/master/Java/web%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84mode1%E4%B8%8Emode2/mode1/%E7%99%BB%E9%99%86-jsp%2Bjdbc" target="_blank" rel="noopener">给一个jsp+javabean登陆的案例: </a><br>
+        <h3 id="Mode1"><a href="#Mode1" class="headerlink" title="Mode1"></a><strong>Mode1</strong></h3><p>mode1指的是将显示层，数据层，控制层交给jsp+javabean处理。jsp负责显示（v层）与逻辑处理（c层），javabean负责业务层(讲真，这种模式在项目中是禁止使用的，个人觉得就是是小型项目也别用了吧)。<br>mode1其实相当于把v层和c层逻辑写在了一起，有jsp负责，javabean只负责业务，这样其实层次分不清，而且可能会导致jsp过于臃肿。<br><img src="\assets\blog_img\180402-1.png" alt=""><br><a href="https://github.com/masterzht/Study-Notes/tree/master/Java/web%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84mode1%E4%B8%8Emode2/mode1/%E7%99%BB%E9%99%86-jsp%2Bjdbc" target="_blank" rel="noopener">给一个jsp+javabean登陆的案例: </a><br>
         
           <a class="article-more-a" href="/2018/04/02/web开发中的model1和model2/#more">more >></a>
         
@@ -805,19 +871,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">https</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ssl</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Java web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">mode1与mode2</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -833,14 +895,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Java web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">mode1与mode2</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">回调</a>
               </li>
              
@@ -850,6 +904,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">异步</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">https</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ssl</a>
               </li>
             
             <div class="clearfix"></div>

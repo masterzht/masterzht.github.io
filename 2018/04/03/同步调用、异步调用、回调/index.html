@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://masterzht.github.io/assets/online_img/同步调用.png">
 <meta property="og:image" content="https://masterzht.github.io/assets/online_img/异步调用.png">
 <meta property="og:image" content="https://masterzht.github.io/assets/online_img/回调.png">
-<meta property="og:updated_time" content="2018-04-03T12:17:26.834Z">
+<meta property="og:updated_time" content="2018-04-04T04:09:04.846Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="同步调用、异步调用、回调">
 <meta name="twitter:description" content="方法调用同步调用:要等待对方执行完毕才返回。A类中的a方法里面用到了B类的b方法，所以要执行完b（）之后a方法才结束。如果等待b方法太就的话，就会导致堵塞。  异步调用:是解决同步可能出现的堵塞的情况。它的a方法不会等待b方法的执行，可能a方法直接返回了一个空值，然后A类开始下面的运行，b方法再慢慢执行，这就是异步（实现的时候开一个线程就可以）。  回调但为什么会出来回调呢，因为异步的b方法自己单">
@@ -178,6 +178,7 @@
 <p><strong>异步调用</strong>:是解决同步可能出现的堵塞的情况。它的a方法不会等待b方法的执行，可能a方法直接返回了一个空值，然后A类开始下面的运行，b方法再慢慢执行，这就是异步（实现的时候开一个线程就可以）。</p>
 <p><img src="\assets\online_img\异步调用.png" alt="upload successful"></p>
 <h2 id="回调"><a href="#回调" class="headerlink" title="回调"></a><strong>回调</strong></h2><p>但为什么会出来回调呢，因为异步的b方法自己单独执行了，但是如果我想获取b方法的结果给a呢，所以就引出了回调这个说法。（讲真，如果a方法只是需要b的一个结果的话，不需要回调，但是如果a方法需要b返回很多东西就不行了，而回调就可以callback.method1，2，3()…….)<br><strong>回调也分为同步回调和异步回调</strong>，和上面的调用是一样的，异步回调a方法不用等待b方法执行完。</p>
+<p>总结一下回调的步骤：a调用b方法，并且把自身作为一个callback传给了b方法，b执行玩个就可以通过传过来的a自身这个callback<strong>回传数据</strong>。（其实可以不用回调，b自己new一个a，然后在掉用A类里面的方法就可以了，不过终究是不好的，至于为什么我也不怎么清楚）</p>
 <p><img src="\assets\online_img\回调.png" alt="upload successful"></p>
 <p>关于同步异步、堵塞与非堵塞的关系可以参考这篇博文： <a href="http://www.cnblogs.com/xybaby/p/6406191.html" target="_blank" rel="noopener">http://www.cnblogs.com/xybaby/p/6406191.html</a></p>
 <p>同异步回调案例： <a href="https://github.com/masterzht/Study-Notes/tree/master/Java/%E5%90%8C%E6%AD%A5%E5%9B%9E%E8%B0%83%E4%B8%8E%E5%BC%82%E6%AD%A5%E5%9B%9E%E8%B0%83" target="_blank" rel="noopener">https://github.com/masterzht/Study-Notes/tree/master/Java/%E5%90%8C%E6%AD%A5%E5%9B%9E%E8%B0%83%E4%B8%8E%E5%BC%82%E6%AD%A5%E5%9B%9E%E8%B0%83</a></p>
@@ -314,6 +315,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2018/04/04/Rertofit的使用/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Rertofit的使用
+        
+      </div>
+    </a>
+  
   
     <a href="/2018/04/02/web开发中的model1和model2/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">web开发中的mode1和mode2</div>
@@ -446,19 +456,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">https</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ssl</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Java web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">mode1与mode2</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -474,14 +480,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Java web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">mode1与mode2</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">回调</a>
               </li>
              
@@ -491,6 +489,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">异步</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">https</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ssl</a>
               </li>
             
             <div class="clearfix"></div>
