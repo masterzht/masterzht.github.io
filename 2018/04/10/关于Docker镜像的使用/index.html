@@ -6,15 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://masterzht.github.io">
-  <title>Tag: ssl | Machinezht&#39;s Blog</title>
+  <title>关于Docker镜像的使用 | Machinezht&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Machinezht&#39;s Blog">
-<meta property="og:url" content="https://masterzht.github.io/tags/ssl/index.html">
+  <meta name="description" content="有挺长时间没有更新博客了，下次改改。。docker核心是容器，它的作用就是虚拟化一个容器，这个容器可能是系统，可能是web服务器等等，通过pull、run之后容器保持运行状态，这样我们就可以在容器跑应用了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于Docker镜像的使用">
+<meta property="og:url" content="https://masterzht.github.io/2018/04/10/关于Docker镜像的使用/index.html">
 <meta property="og:site_name" content="Machinezht&#39;s Blog">
+<meta property="og:description" content="有挺长时间没有更新博客了，下次改改。。docker核心是容器，它的作用就是虚拟化一个容器，这个容器可能是系统，可能是web服务器等等，通过pull、run之后容器保持运行状态，这样我们就可以在容器跑应用了。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://masterzht.github.io/assets/online_img/docker架构.png">
+<meta property="og:image" content="https://masterzht.github.io/assets/online_img/image.png">
+<meta property="og:image" content="https://masterzht.github.io/assets/online_img/docker容器.png">
+<meta property="og:updated_time" content="2018-04-10T12:57:16.562Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Machinezht&#39;s Blog">
+<meta name="twitter:title" content="关于Docker镜像的使用">
+<meta name="twitter:description" content="有挺长时间没有更新博客了，下次改改。。docker核心是容器，它的作用就是虚拟化一个容器，这个容器可能是系统，可能是web服务器等等，通过pull、run之后容器保持运行状态，这样我们就可以在容器跑应用了。">
+<meta name="twitter:image" content="https://masterzht.github.io/assets/online_img/docker架构.png">
   
     <link rel="alternative" href="/atom.xml" title="Machinezht&#39;s Blog" type="application/atom+xml">
   
@@ -144,79 +152,197 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-关于Docker镜像的使用" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/31/180331-2/" class="archive-article-date">
-  	<time datetime="2018-03-31T01:05:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/31/180331-2/">SSL(Secure Socket Layer)的工作原理</a>
+    <h1 class="article-title" itemprop="name">
+      关于Docker镜像的使用
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">https</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网络</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ssl</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        <a href="/2018/04/10/关于Docker镜像的使用/" class="archive-article-date">
+  	<time datetime="2018-04-10T11:16:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>有挺长时间没有更新博客了，下次改改。。<br>docker核心是容器，它的作用就是虚拟化一个容器，这个容器可能是系统，可能是web服务器等等，通过pull、run之后容器保持运行状态，这样我们就可以在容器跑应用了。</p>
+<p><img src="\assets\online_img\docker架构.png" alt="upload successful"><br><a id="more"></a></p>
+<h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a><strong>基本使用</strong></h3><p>弄清楚几个概念：</p>
+<ul>
+<li>镜像：docker images(这里显示的镜像基本只有两个途径，一个是你自己在官方仓库pull的，一个是你修改仓库再commit提交的,相当于ghost镜像）</li>
+</ul>
+<blockquote>
+<p>fav开头的是自己commit的，docker.io开头的明显是官方镜像</p>
+</blockquote>
+<p><img src="\assets\online_img\image.png" alt="upload successful"></p>
+<ul>
+<li>容器：docker ps -a（这里的容器包括运行与未运行的）</li>
+</ul>
+<p><img src="\assets\online_img\docker容器.png" alt="upload successful"><br>docker有个-d的指令，是在后台以进程形式运行command。但要强调一点，并不是有-d，用docker ps就能显示它是运行状态的了，因为只要后台跑完这个command就不会存在与运行状态</p>
+<p>docker logs container-id:显示这个容器中运行的log，相关输出。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run ubuntu:15.10 /bin/echo &quot;Hello world&quot;</span><br></pre></td></tr></table></figure>
+<p>这段代码实际上分为三步：</p>
+<ol>
+<li>docker pull ubuntu:15.10   (这步是下载镜像)</li>
+<li>docker run -i -t  ubuntu:15.10 /bin/bash  (打开ubuntu镜像，打开内部终端，并与外部输入交互)</li>
+<li>echo “hello world” </li>
+</ol>
+<p>这个容器不同于服务，如果用docker运行mysql这类的服务的时候，docker容器是属于保持打开状态的，也就是用docker ps命令会显示容器id，而这个helloworld则属于片段性的，跑完就关闭。</p>
 
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/计算机//" class="article-tag-list-link color4">计算机</a>
-        		</li>
-      		
-		</ul>
-	</div>
+      
 
-
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://masterzht.github.io/2018/04/10/关于Docker镜像的使用/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/04/17/逃跑的朝鲜新娘/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          短文赏析-逃跑的朝鲜新娘
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2018/04/04/Rertofit的使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Rertofit的使用</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -239,9 +365,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

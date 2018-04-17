@@ -8,21 +8,21 @@
   <link rel="dns-prefetch" href="https://masterzht.github.io">
   <title>同步调用、异步调用、回调 | Machinezht&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="方法调用同步调用:要等待对方执行完毕才返回。A类中的a方法里面用到了B类的b方法，所以要执行完b（）之后a方法才结束。如果等待b方法太就的话，就会导致堵塞。  异步调用:是解决同步可能出现的堵塞的情况。它的a方法不会等待b方法的执行，可能a方法直接返回了一个空值，然后A类开始下面的运行，b方法再慢慢执行，这就是异步（实现的时候开一个线程就可以）。  回调但为什么会出来回调呢，因为异步的b方法自己单">
+  <meta name="description" content="方法调用同步调用:要等待对方执行完毕才返回。A类中的a方法里面用到了B类的b方法，所以要执行完b（）之后a方法才结束。如果等待b方法太就的话，就会导致堵塞。（例子：让人买个水，然后就傻等着）  异步调用:是解决同步可能出现的堵塞的情况。它的a方法不会等待b方法的执行，可能a方法直接返回了一个空值，然后A类开始下面的运行，b方法再慢慢执行，这就是异步（实现的时候开一个线程就可以）。（例子：让人买个水">
 <meta name="keywords" content="回调,堵塞,异步">
 <meta property="og:type" content="article">
 <meta property="og:title" content="同步调用、异步调用、回调">
 <meta property="og:url" content="https://masterzht.github.io/2018/04/03/同步调用、异步调用、回调/index.html">
 <meta property="og:site_name" content="Machinezht&#39;s Blog">
-<meta property="og:description" content="方法调用同步调用:要等待对方执行完毕才返回。A类中的a方法里面用到了B类的b方法，所以要执行完b（）之后a方法才结束。如果等待b方法太就的话，就会导致堵塞。  异步调用:是解决同步可能出现的堵塞的情况。它的a方法不会等待b方法的执行，可能a方法直接返回了一个空值，然后A类开始下面的运行，b方法再慢慢执行，这就是异步（实现的时候开一个线程就可以）。  回调但为什么会出来回调呢，因为异步的b方法自己单">
+<meta property="og:description" content="方法调用同步调用:要等待对方执行完毕才返回。A类中的a方法里面用到了B类的b方法，所以要执行完b（）之后a方法才结束。如果等待b方法太就的话，就会导致堵塞。（例子：让人买个水，然后就傻等着）  异步调用:是解决同步可能出现的堵塞的情况。它的a方法不会等待b方法的执行，可能a方法直接返回了一个空值，然后A类开始下面的运行，b方法再慢慢执行，这就是异步（实现的时候开一个线程就可以）。（例子：让人买个水">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://masterzht.github.io/assets/online_img/同步调用.png">
 <meta property="og:image" content="https://masterzht.github.io/assets/online_img/异步调用.png">
 <meta property="og:image" content="https://masterzht.github.io/assets/online_img/回调.png">
-<meta property="og:updated_time" content="2018-04-04T04:09:04.846Z">
+<meta property="og:updated_time" content="2018-04-17T02:16:50.066Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="同步调用、异步调用、回调">
-<meta name="twitter:description" content="方法调用同步调用:要等待对方执行完毕才返回。A类中的a方法里面用到了B类的b方法，所以要执行完b（）之后a方法才结束。如果等待b方法太就的话，就会导致堵塞。  异步调用:是解决同步可能出现的堵塞的情况。它的a方法不会等待b方法的执行，可能a方法直接返回了一个空值，然后A类开始下面的运行，b方法再慢慢执行，这就是异步（实现的时候开一个线程就可以）。  回调但为什么会出来回调呢，因为异步的b方法自己单">
+<meta name="twitter:description" content="方法调用同步调用:要等待对方执行完毕才返回。A类中的a方法里面用到了B类的b方法，所以要执行完b（）之后a方法才结束。如果等待b方法太就的话，就会导致堵塞。（例子：让人买个水，然后就傻等着）  异步调用:是解决同步可能出现的堵塞的情况。它的a方法不会等待b方法的执行，可能a方法直接返回了一个空值，然后A类开始下面的运行，b方法再慢慢执行，这就是异步（实现的时候开一个线程就可以）。（例子：让人买个水">
 <meta name="twitter:image" content="https://masterzht.github.io/assets/online_img/同步调用.png">
   
     <link rel="alternative" href="/atom.xml" title="Machinezht&#39;s Blog" type="application/atom+xml">
@@ -173,9 +173,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="方法调用"><a href="#方法调用" class="headerlink" title="方法调用"></a><strong>方法调用</strong></h2><p><strong>同步调用</strong>:要等待对方执行完毕才返回。A类中的a方法里面用到了B类的b方法，所以要执行完b（）之后a方法才结束。如果等待b方法太就的话，就会导致堵塞。</p>
+        <h2 id="方法调用"><a href="#方法调用" class="headerlink" title="方法调用"></a><strong>方法调用</strong></h2><p><strong>同步调用</strong>:要等待对方执行完毕才返回。A类中的a方法里面用到了B类的b方法，所以要执行完b（）之后a方法才结束。如果等待b方法太就的话，就会导致堵塞。（例子：让人买个水，然后就傻等着）</p>
 <p><img src="\assets\online_img\同步调用.png" alt="upload successful"></p>
-<p><strong>异步调用</strong>:是解决同步可能出现的堵塞的情况。它的a方法不会等待b方法的执行，可能a方法直接返回了一个空值，然后A类开始下面的运行，b方法再慢慢执行，这就是异步（实现的时候开一个线程就可以）。</p>
+<p><strong>异步调用</strong>:是解决同步可能出现的堵塞的情况。它的a方法不会等待b方法的执行，可能a方法直接返回了一个空值，然后A类开始下面的运行，b方法再慢慢执行，这就是异步（实现的时候开一个线程就可以）。（例子：让人买个水，在这里就玩个手机干别的事情了）</p>
 <p><img src="\assets\online_img\异步调用.png" alt="upload successful"></p>
 <h2 id="回调"><a href="#回调" class="headerlink" title="回调"></a><strong>回调</strong></h2><p>但为什么会出来回调呢，因为异步的b方法自己单独执行了，但是如果我想获取b方法的结果给a呢，所以就引出了回调这个说法。（讲真，如果a方法只是需要b的一个结果的话，不需要回调，但是如果a方法需要b返回很多东西就不行了，而回调就可以callback.method1，2，3()…….)<br><strong>回调也分为同步回调和异步回调</strong>，和上面的调用是一样的，异步回调a方法不用等待b方法执行完。</p>
 <p>总结一下回调的步骤：a调用b方法，并且把自身作为一个callback传给了b方法，b执行玩个就可以通过传过来的a自身这个callback<strong>回传数据</strong>。（其实可以不用回调，b自己new一个a，然后在掉用A类里面的方法就可以了，不过终究是不好的，至于为什么我也不怎么清楚）</p>
@@ -452,19 +452,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">华为</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Java web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">mode1与mode2</a>
+                <a href="javascript:void(0)" class="js-tag color3">华为</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -480,6 +472,26 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">https</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ssl</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Java web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">mode1与mode2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">回调</a>
               </li>
              
@@ -492,15 +504,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">https</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ssl</a>
+                <a href="javascript:void(0)" class="js-tag color3">短文</a>
               </li>
             
             <div class="clearfix"></div>
