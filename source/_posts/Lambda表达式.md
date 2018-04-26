@@ -17,7 +17,7 @@ new Thread(new Runnable(){// 接口名
     }
 }).start();
 ```
-<!-- more -->
+
 本身代码没有任何问题，相当完美，但程序员哪就是懒，讨厌输这么多
 ```
 // JDK8 Lambda表达式写法
@@ -26,7 +26,7 @@ new Thread(
 ).start();
 ```
 其实只是简单介绍一下，在java的lambda表达式中，主要可以靠IDEA的缩进选项自动选择，没必要额外记录。
-
+<!-- more -->
 **Android**
 
 最常用的click语句
