@@ -27,6 +27,30 @@ new Thread(
 ```
 其实只是简单介绍一下，在java的lambda表达式中，主要可以靠IDEA的缩进选项自动选择，没必要额外记录。
 
+**Android**
+
+最常用的click语句
+```
+textView.setOnClickListener(new View.OnClickListener(){
+    @Override
+    public void onClick(View v) {
+        Toast.makeText(getApplicationContext(), "hello Lambda", Toast.LENGTH_LONG).show();
+    }
+});
+```
+采用lambda表达式
+
+```
+textView.setOnClickListener( v -> Toast.makeText(getApplicationContext(), "hello Lambda", Toast.LENGTH_LONG).show());
+```
+一个字，强，然而。。。
+kotlin貌似崛起了，还成为了google指定的Android开发语言，比lambda强，那么要弃lambda转kotlin吗？
+
+虽说kotlin真的有替代Java的势头，这确实是大势所趋。但目前的编程语言应该也过于饱化了，更多语言的诞生目的多是为了简化程序员的工作，使编程变得更加简单方便。然而过于先进的语法会使人减少对语句的思考，使程序员流于表面而不能透其内核。
+
+
+
+
 **PYTHON**
 
 输出0,1,4,9。。。。
