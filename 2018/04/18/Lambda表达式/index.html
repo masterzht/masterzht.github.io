@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Machinezht&#39;s Blog">
 <meta property="og:description" content="Lambda表达式的主要用途就是创建匿名函数,主要是针对只使用一次的函数创建。 JAVA 举个栗子：打印”6666“1234567 匿名内部类写法new Thread(new Runnable()&amp;#123;// 接口名    @Override    public void run()&amp;#123;// 方法名        System.out.println(&amp;quot;666&amp;quot;);">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-26T03:22:12.393Z">
+<meta property="og:updated_time" content="2018-04-26T03:32:06.640Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Lambda表达式简介-基于Java与Python平台">
 <meta name="twitter:description" content="Lambda表达式的主要用途就是创建匿名函数,主要是针对只使用一次的函数创建。 JAVA 举个栗子：打印”6666“1234567 匿名内部类写法new Thread(new Runnable()&amp;#123;// 接口名    @Override    public void run()&amp;#123;// 方法名        System.out.println(&amp;quot;666&amp;quot;);">
@@ -171,10 +171,8 @@
         <p>Lambda表达式的主要用途就是创建匿名函数,主要是针对只使用一次的函数创建。</p>
 <p><strong>JAVA</strong></p>
 <p>举个栗子：打印”6666“<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> 匿名内部类写法</span><br><span class="line">new Thread(new Runnable()&#123;// 接口名</span><br><span class="line">    @Override</span><br><span class="line">    public void run()&#123;// 方法名</span><br><span class="line">        System.out.println(&quot;666&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).start();</span><br></pre></td></tr></table></figure></p>
-<a id="more"></a>
 <p>本身代码没有任何问题，相当完美，但程序员哪就是懒，讨厌输这么多<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// JDK8 Lambda表达式写法</span><br><span class="line">new Thread(</span><br><span class="line">        () -&gt; System.out.println(&quot;666&quot;)// 省略接口名和方法名</span><br><span class="line">).start();</span><br></pre></td></tr></table></figure></p>
-<p>其实只是简单介绍一下，在java的lambda表达式中，主要可以靠IDEA的缩进选项自动选择，没必要额外记录。</p>
-<p><strong>Android</strong></p>
+<p>其实只是简单介绍一下，在java的lambda表达式中，主要可以靠IDEA的缩进选项自动选择，没必要额外记录。<br><a id="more"></a><br><strong>Android</strong></p>
 <p>最常用的click语句<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">textView.setOnClickListener(new View.OnClickListener()&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void onClick(View v) &#123;</span><br><span class="line">        Toast.makeText(getApplicationContext(), &quot;hello Lambda&quot;, Toast.LENGTH_LONG).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
 <p>采用lambda表达式</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">textView.setOnClickListener( v -&gt; Toast.makeText(getApplicationContext(), &quot;hello Lambda&quot;, Toast.LENGTH_LONG).show());</span><br></pre></td></tr></table></figure>
@@ -429,18 +427,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">误闯疯人院</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">电影</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">华为</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">https</a>
               </li>
              
@@ -450,6 +436,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ssl</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">华为</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">误闯疯人院</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">电影</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -465,14 +463,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Java web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">mode1与mode2</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">回调</a>
               </li>
              
@@ -485,6 +475,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Java web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">mode1与mode2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">短文</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
@@ -494,10 +496,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">MVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">短文</a>
               </li>
             
             <div class="clearfix"></div>
