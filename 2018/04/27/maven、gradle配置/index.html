@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://masterzht.github.io">
-  <title>Machinezht&#39;s Blog</title>
+  <title>maven、gradle配置 | Machinezht&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Machinezht&#39;s Blog">
-<meta property="og:url" content="https://masterzht.github.io/index.html">
+  <meta name="description" content="maven maven环境配置   设置MAVEN_HOME-作用是给ide识别，idea识别到MAVEN_HOME就会定位到按这个安装目录配置（最好在用户和系统环境都设置吧） 设置path，这个主要是给命令行识别这个命令 然后就是在MAVEN_HOME里面加入settings.xml设置仓库位置，这样就是万无一失吧 还可以设置安装镜像源  http://mirrors.163.com/maven">
+<meta property="og:type" content="article">
+<meta property="og:title" content="maven、gradle配置">
+<meta property="og:url" content="https://masterzht.github.io/2018/04/27/maven、gradle配置/index.html">
 <meta property="og:site_name" content="Machinezht&#39;s Blog">
+<meta property="og:description" content="maven maven环境配置   设置MAVEN_HOME-作用是给ide识别，idea识别到MAVEN_HOME就会定位到按这个安装目录配置（最好在用户和系统环境都设置吧） 设置path，这个主要是给命令行识别这个命令 然后就是在MAVEN_HOME里面加入settings.xml设置仓库位置，这样就是万无一失吧 还可以设置安装镜像源  http://mirrors.163.com/maven">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-11-05T08:10:04.890Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Machinezht&#39;s Blog">
+<meta name="twitter:title" content="maven、gradle配置">
+<meta name="twitter:description" content="maven maven环境配置   设置MAVEN_HOME-作用是给ide识别，idea识别到MAVEN_HOME就会定位到按这个安装目录配置（最好在用户和系统环境都设置吧） 设置path，这个主要是给命令行识别这个命令 然后就是在MAVEN_HOME里面加入settings.xml设置仓库位置，这样就是万无一失吧 还可以设置安装镜像源  http://mirrors.163.com/maven">
   
     <link rel="alternative" href="/atom.xml" title="Machinezht&#39;s Blog" type="application/atom+xml">
   
@@ -144,85 +148,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-浅析GPS定位原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-maven、gradle配置" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/05/浅析GPS定位原理/">浅析GPS定位原理</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/05/浅析GPS定位原理/" class="archive-article-date">
-  	<time datetime="2018-11-05T08:15:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>  全球定位系统（英语：Global Positioning System，通常简称GPS），又称全球卫星定位系统，是美国国防部研制和维护的中距离圆型轨道卫星导航系统。它可以为地球表面绝大部分地区（98%）提供准确的定位、测速和高精度的标准时间。全球定位系统可满足位于全球地面任一处或近地空间的军事用户连续且精确的确定三维位置、三维运动和时间的需求。该系统包括太空中的31颗GPS人造卫星；地面上1个主控站、3个数据注入站和5个监测站，及作为用户端的GPS接收机。最少只需其中3颗卫星，就能迅速确定用户端在地球上所处的位置及海拔高度；所能接收到的卫星讯号数越多，解码出来的位置就越精确。</p>
-<p>  <strong>详细介绍一下定位原理</strong></p>
-<p><img src="\assets\online_img\pasted-1.png" alt="filename already exists, renamed"></p>
-<p>  首先纠正一个观念，就是我们常用的gps设备都只具备接受功能，不具备发送功能，因为gps的卫星也根本没有办法同时处理地面数以亿计的gps设备发送的信息。<br>  gps的定位要求是要确保在地球的任意一个位置上方的卫星数不少于四颗，这样可以实现基本的卫星定位。然而理论上，只需要三颗卫星就可以实现基本的定位。<br>  天上的gps卫星发送信息，地面的gps设备接受信息，卫星发送的信息主要是两个，一个是当前的时间戳，另一个则是卫星自身所处的位置（一般用经纬度、高度表示，是三维的）。我们地面的设备收到gps信息后，用当前的时间减去发送过来的时间戳再去乘以信息发送的速度（接近于光速）就可以得到gps设备与卫星的距离d。在三维空间里面，我们知道了三个点的坐标，并且有了与这三个点的距离，就可以得到gps设备的三维坐标。当然，由于gps信息在空中传输有所折损，并且最关键的一点是店面设备所得到的当前时间是及其不精准的，误差可能极大，所以引入了第四个坐标。</p>
-<p><img src="\assets\online_img\image-gps.png" alt="upload successful"></p>
-<p> 常用的用于提高精度的方法还有差分定位或者相对定位，实际上就是在地面添加坐标</p>
-<p><img src="\assets\online_img\image相对定位.png" alt="upload successful"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/05/浅析GPS定位原理/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-maven、gradle配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/27/maven、gradle配置/">maven、gradle配置</a>
+    <h1 class="article-title" itemprop="name">
+      maven、gradle配置
     </h1>
   
 
@@ -253,6 +186,37 @@
       
 
       
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
     </div>
     <div class="article-info article-info-index">
       
@@ -260,16 +224,84 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/27/maven、gradle配置/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://masterzht.github.io/2018/04/27/maven、gradle配置/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/11/05/浅析GPS定位原理/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          浅析GPS定位原理
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/04/26/浅析Java开发架构/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">浅析Java开发架构</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -289,694 +321,14 @@
 
 
 
-
-  
-    <article id="post-浅析Java开发架构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/26/浅析Java开发架构/">浅析Java开发架构</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/26/浅析Java开发架构/" class="archive-article-date">
-  	<time datetime="2018-04-26T02:29:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>目前了解的有三层架构模式，MVC模式，这里会详解这两种开发模式。</p>
-<p>比较古老的是三层架构模式，这属于抽象宏观层面的，给了我们一个开发的思路。</p>
-<p>三层架构模式把整个业务应用划分为：界面层（User Interface layer）、业务逻辑层（Business Logic Layer）、数据访问层（Data access layer）。</p>
-<p><img src="\assets\online_img\架构.png" alt="upload successful"><br>对应的包名分别为ui、service、dao。</p>
-<p>三次架构模式对应到生活当中就是服务员、厨师、采购员。<br><img src="\assets\online_img\三层架构模式.png" alt="upload successful"></p>
-<p>这属于宏观的解决方案，而MVC模式属于微观解决方案，现实中程序员接触到的还是MVC模式。<br>
-        
-          <a class="article-more-a" href="/2018/04/26/浅析Java开发架构/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">架构模式</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">MVC</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/计算机//" class="article-tag-list-link color4">计算机</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/26/浅析Java开发架构/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Lambda表达式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/18/Lambda表达式/">Lambda表达式简介-基于Java与Python平台</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/18/Lambda表达式/" class="archive-article-date">
-  	<time datetime="2018-04-18T06:08:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Lambda表达式的主要用途就是创建匿名函数,主要是针对只使用一次的函数创建。</p>
-<p><strong>JAVA</strong></p>
-<p>举个栗子：打印”6666“<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> 匿名内部类写法</span><br><span class="line">new Thread(new Runnable()&#123;// 接口名</span><br><span class="line">    @Override</span><br><span class="line">    public void run()&#123;// 方法名</span><br><span class="line">        System.out.println(&quot;666&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).start();</span><br></pre></td></tr></table></figure></p>
-<p>本身代码没有任何问题，相当完美，但程序员哪就是懒，讨厌输这么多<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// JDK8 Lambda表达式写法</span><br><span class="line">new Thread(</span><br><span class="line">        () -&gt; System.out.println(&quot;666&quot;)// 省略接口名和方法名</span><br><span class="line">).start();</span><br></pre></td></tr></table></figure></p>
-<p>其实只是简单介绍一下，在java的lambda表达式中，主要可以靠IDEA的缩进选项自动选择，没必要额外记录。<br>
-        
-          <a class="article-more-a" href="/2018/04/18/Lambda表达式/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/18/Lambda表达式/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-逃跑的朝鲜新娘" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/17/逃跑的朝鲜新娘/">短文赏析-逃跑的朝鲜新娘</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/17/逃跑的朝鲜新娘/" class="archive-article-date">
-  	<time datetime="2018-04-17T02:25:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一 </p>
-<p>老王买了个媳妇，花了两万块钱，是个朝鲜人。偏远村镇，家家都攀得上亲，细算起来，老王算是我远房表舅，是个混吃等死的老光棍。</p>
-<p>那年月，花钱买女人是常有的事，尤其是朝鲜人，偷渡来了中国，没地方安身，只能托人把自己卖了。</p>
-<p>人贩子带人来的那天傍晚，雪下的贼大，那女人身上挂满了雪，冻得直哆嗦。老王看了觉得可怜，还没看清楚模样，就把钱付了。按理说，朝鲜女人是不值两万块的，可是老王连价都没压，说是因为大雪压身，是个吉兆。明眼人都知道，他只是心肠软了。</p>
-<p>女人就这么留了下来。人贩子走后，她就一个人蹲在墙角，连个声都不吭。老王在旁边看着，心里总是有点堵，他买女人无非是为了睡觉的，可是现在却半点心思都没了。<br>
-        
-          <a class="article-more-a" href="/2018/04/17/逃跑的朝鲜新娘/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">短文</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/文章//" class="article-tag-list-link color3">文章</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/17/逃跑的朝鲜新娘/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-关于Docker镜像的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/10/关于Docker镜像的使用/">关于Docker镜像的使用</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/10/关于Docker镜像的使用/" class="archive-article-date">
-  	<time datetime="2018-04-10T11:16:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>有挺长时间没有更新博客了，下次改改。。<br>docker核心是容器，它的作用就是虚拟化一个容器，这个容器可能是系统，可能是web服务器等等，通过pull、run之后容器保持运行状态，这样我们就可以在容器跑应用了。</p>
-<p><img src="\assets\online_img\docker架构.png" alt="upload successful"><br>
-        
-          <a class="article-more-a" href="/2018/04/10/关于Docker镜像的使用/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/10/关于Docker镜像的使用/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Rertofit的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/04/Rertofit的使用/">Rertofit的使用</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/04/Rertofit的使用/" class="archive-article-date">
-  	<time datetime="2018-04-04T00:18:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>retrofit是一个网络请求库，它是根据okhttp改造的，底层实现还是okhttp，它自身还封装了解析html，json等等的库，用于更便利的restful风格的数据。（python最近也出现了个库requests-html，把请求和解析都封装好了，过一段时间，我会描述一下这个库的简单使用）<br>目前retrofit的最新版本是2.4.0,我会基于这个版本做简单的使用介绍<br>
-        
-          <a class="article-more-a" href="/2018/04/04/Rertofit的使用/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/04/Rertofit的使用/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-同步调用、异步调用、回调" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/03/同步调用、异步调用、回调/">同步调用、异步调用、回调</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/03/同步调用、异步调用、回调/" class="archive-article-date">
-  	<time datetime="2018-04-03T10:56:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="方法调用"><a href="#方法调用" class="headerlink" title="方法调用"></a><strong>方法调用</strong></h2><p><strong>同步调用</strong>:要等待对方执行完毕才返回。A类中的a方法里面用到了B类的b方法，所以要执行完b（）之后a方法才结束。如果等待b方法太就的话，就会导致堵塞。（例子：让人买个水，然后就傻等着）</p>
-<p><img src="\assets\online_img\同步调用.png" alt="upload successful"></p>
-<p><strong>异步调用</strong>:是解决同步可能出现的堵塞的情况。它的a方法不会等待b方法的执行，可能a方法直接返回了一个空值，然后A类开始下面的运行，b方法再慢慢执行，这就是异步（实现的时候开一个线程就可以）。（例子：让人买个水，在这里就玩个手机干别的事情了）</p>
-<p><img src="\assets\online_img\异步调用.png" alt="upload successful"></p>
-<h2 id="回调"><a href="#回调" class="headerlink" title="回调"></a><strong>回调</strong></h2><p>但为什么会出来回调呢，因为异步的b方法自己单独执行了，但是如果我想获取b方法的结果给a呢，所以就引出了回调这个说法。（讲真，如果a方法只是需要b的一个结果的话，不需要回调，但是如果a方法需要b返回很多东西就不行了，而回调就可以callback.method1，2，3()…….)<br><strong>回调也分为同步回调和异步回调</strong>，和上面的调用是一样的，异步回调a方法不用等待b方法执行完。</p>
-<p>总结一下回调的步骤：a调用b方法，并且把自身作为一个callback传给了b方法，b执行玩个就可以通过传过来的a自身这个callback<strong>回传数据</strong>。（其实可以不用回调，b自己new一个a，然后在掉用A类里面的方法就可以了，不过终究是不好的，至于为什么我也不怎么清楚）</p>
-<p><img src="\assets\online_img\回调.png" alt="upload successful"></p>
-<p>关于同步异步、堵塞与非堵塞的关系可以参考这篇博文： <a href="http://www.cnblogs.com/xybaby/p/6406191.html" target="_blank" rel="noopener">http://www.cnblogs.com/xybaby/p/6406191.html</a></p>
-<p>同异步回调案例： <a href="https://github.com/masterzht/Study-Notes/tree/master/Java/%E5%90%8C%E6%AD%A5%E5%9B%9E%E8%B0%83%E4%B8%8E%E5%BC%82%E6%AD%A5%E5%9B%9E%E8%B0%83" target="_blank" rel="noopener">https://github.com/masterzht/Study-Notes/tree/master/Java/%E5%90%8C%E6%AD%A5%E5%9B%9E%E8%B0%83%E4%B8%8E%E5%BC%82%E6%AD%A5%E5%9B%9E%E8%B0%83</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">回调</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">堵塞</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">异步</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/计算机//" class="article-tag-list-link color4">计算机</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/03/同步调用、异步调用、回调/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-web开发中的model1和model2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/02/web开发中的model1和model2/">web开发中的mode1和mode2</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/02/web开发中的model1和model2/" class="archive-article-date">
-  	<time datetime="2018-04-02T01:20:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Mode1"><a href="#Mode1" class="headerlink" title="Mode1"></a><strong>Mode1</strong></h3><p>mode1指的是将显示层，数据层，控制层交给jsp+javabean处理。jsp负责显示（v层）与逻辑处理（c层），javabean负责业务层(讲真，这种模式在项目中是禁止使用的，个人觉得就是是小型项目也别用了吧)。<br>mode1其实相当于把v层和c层逻辑写在了一起，有jsp负责，javabean只负责业务，这样其实层次分不清，而且可能会导致jsp过于臃肿。<br><img src="\assets\blog_img\180402-1.png" alt=""><br><a href="https://github.com/masterzht/Study-Notes/tree/master/Java/web%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84mode1%E4%B8%8Emode2/mode1/%E7%99%BB%E9%99%86-jsp%2Bjdbc" target="_blank" rel="noopener">给一个jsp+javabean登陆的案例: </a><br>
-        
-          <a class="article-more-a" href="/2018/04/02/web开发中的model1和model2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Java web</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">mode1与mode2</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/计算机//" class="article-tag-list-link color4">计算机</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/02/web开发中的model1和model2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Spring基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/31/Spring基础/">Spring基础认识</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/31/Spring基础/" class="archive-article-date">
-  	<time datetime="2018-03-31T13:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Spring框架是一个开源的轻量级企业应用开发框架。大致可以分为七个模块。</p>
-<p><img src="/assets/blog_img/180331-3.gif" alt="七大模块"></p>
-<blockquote>
-<p><a href="https://blog.csdn.net/xlgen157387/article/details/45290799" target="_blank" rel="noopener">七大模块作用及简介</a></p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2018/03/31/Spring基础/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ioc</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DI</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/计算机//" class="article-tag-list-link color4">计算机</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/31/Spring基础/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -999,8 +351,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
