@@ -80,7 +80,8 @@ theme: yilia       #博客主题
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo:  git@github.com:masterzht/masterzht.github.io.git 
+  #repo:  git@github.com:masterzht/masterzht.github.io.git 
+  repo: https://github.com/masterzht/masterzht.github.io.git
   branch: master
   
   
@@ -88,7 +89,8 @@ backup:
     type: git
     message: update xxx
     repository:
-       github: git@github.com:masterzht/masterzht.github.io.git,backup_branch
+       #github: git@github.com:masterzht/masterzht.github.io.git,backup_branch
+       github:https://github.com/masterzht/masterzht.github.io.git,backup_branch
        
   
 jsonContent:
